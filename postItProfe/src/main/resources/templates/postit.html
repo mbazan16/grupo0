@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/estilo.css"/>
+<title>Postit</title>
+</head>
+<body>
+	<table id="telement">
+		<tbody>
+			<tr>
+				<th>Color</th>
+				<td th:text="${element.color}"></td>
+			</tr>
+			<tr>
+				<th>Tamaño</th>
+				<td th:text="${element.tamanio}"></td>
+			</tr>
+		</tbody>
+	</table>
+	
+<form id="fUpElement" method="post" th:action="@{/postit/update}" th:object="${element}">
+	Id:<input type="text"  th:field="*{id}" required/><br/>	
+	 Color:<input type="text" th:field="*{color}" required/><br/>	
+	 Tamaño:<input type="text"th:field="*{tamanio}" required/><br/>	
+	 
+	 <button type="submit">Enviar</button>  
+	</form>	
+
+</body>
+</html>

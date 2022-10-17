@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="/css/estilo.css"/>
+<title>Post-Its</title>
+</head>
+<body>
+	<table id="tlist">
+		<thead>
+			<tr>
+				<th>Color</th>
+				<th>Tamanio</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr th:each="element:${elements}">
+				<td th:text="${element.color}" /td>
+				<td th:text="${element.tamanio}" /td>
+				<td>
+				  <a th:href="@{/postit/}+${element.id}">
+				    Ver
+				  </a>
+				  </td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<form id="fNewElement" method="post" th:action="@{/postit/new}">
+	 Color:<input type="text" name="color" required/><br/>	
+	 Tamaño:<input type="text" name="tamanio" required/><br/>	
+	 
+	 <button type="submit">Enviar</button>  
+	</form>
+
+</body>
+</html>
