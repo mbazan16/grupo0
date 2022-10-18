@@ -1,0 +1,21 @@
+body{
+	
+	background-color: #b9cff4;
+	font-family: Verdana;
+	font-size: medium;
+}
+
+#tlist{
+	width:100%;
+	align-content: center;
+	border: 2px white solid;
+	font-family: Book Antiqua;
+	text-align: center;
+	
+}
+
+#tlist > thead{
+	background-color: white; 
+	color:#004080;
+}
+
