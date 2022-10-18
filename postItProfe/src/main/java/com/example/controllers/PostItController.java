@@ -22,14 +22,14 @@ public class PostItController {
 	Logger log = LoggerFactory.getLogger(PostItController.class);
 	
 	@Autowired
-	IServPostIt servicio;
+	IServPostIt service;
 	
 	
 	@GetMapping("/")
 	public String list(Model model) {
 		log.info("[list]");
 		
-		Iterable<PostIt> list = servicio.getList();
+		Iterable<PostIt> list = service.getList();
 		
 		log.debug("List:");
 		list.forEach(s->log.debug(s.toString()));
@@ -46,7 +46,7 @@ public class PostItController {
 		log.info("[element]");
 		log.debug("[id:"+id+"]");
 		
-		PostIt element=servicio.getElement(id);
+		PostIt element=service.getElement(id);
 		
 		log.debug(element.toString());
 		
@@ -64,7 +64,7 @@ public class PostItController {
 		log.debug("[color:"+color+"]");
 		log.debug("[tamanio:"+tamanio+"]");
 		
-		servicio.newElement(color,tamanio);			
+		service.newElement(color,tamanio);			
 		
 		
 	
@@ -73,13 +73,26 @@ public class PostItController {
 	}
 	
 	@PostMapping("/update")
-	public String updateElement(Model model,@ModelAttribute PostIt elemento) {
+	public String updateElement(Model model,@ModelAttribute PostIt element) {
 		log.info("[element]");
-		log.debug("[elemento:"+elemento.toString()+"]");
+		log.debug("[element:"+element.toString()+"]");
+		
+		service.update(element);
+		
+		return "redirect:/postit/"+element.getId();		
+		
+	}
+	
+	
+	@GetMapping("/d/{id}")
+	public String deleteElement(Model model,@PathVariable("id") Long identificador) {
+		log.info("[element]");
+		log.debug("[id:"+identificador+"]");
+		
+		service.delete(identificador);
 		
 		
-		
-		return "redirect:/postit/";		
+		return "redirect:/postit/";
 		
 	}
 

@@ -6,9 +6,11 @@
 <title>Post-Its</title>
 </head>
 <body>
+ 
 	<table id="tlist">
 		<thead>
 			<tr>
+			<th>ID</th>
 				<th>Color</th>
 				<th>Tamanio</th>
 				<th></th>
@@ -16,11 +18,15 @@
 		</thead>
 		<tbody>
 			<tr th:each="element:${elements}">
+				<td th:text="${element.id}" /td>
 				<td th:text="${element.color}" /td>
 				<td th:text="${element.tamanio}" /td>
 				<td>
 				  <a th:href="@{/postit/}+${element.id}">
 				    Ver
+				  </a>
+				  <a th:href="@{/postit/d/}+${element.id}">
+				    Eliminar
 				  </a>
 				  </td>
 			</tr>

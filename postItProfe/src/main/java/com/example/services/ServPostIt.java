@@ -45,4 +45,22 @@ public class ServPostIt implements IServPostIt {
 		log.debug("Elemento creado:"+element);
 	}
 
+	@Override
+	public void update(PostIt element) {
+		log.info("[update]");
+		log.debug("[element:" + element.toString() + "]");
+		
+		repository.save(element);
+		
+	}
+
+	@Override
+	public void delete(Long identificador) {
+		log.info("[delete]");
+		log.debug("[identificador:" + identificador + "]");
+		
+		repository.deleteById(identificador);
+		
+	}
+
 }
