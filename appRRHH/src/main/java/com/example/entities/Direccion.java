@@ -33,7 +33,7 @@ public class Direccion implements Serializable {
 	//bi-directional many-to-one association to Pais
 	@ManyToOne
 	@JoinColumn(name="COUNTRY_ID")
-	private Pais country;
+	private Pais pais;
 
 	public Direccion() {
 	}
@@ -78,12 +78,14 @@ public class Direccion implements Serializable {
 		this.calle = calle;
 	}
 
-	public Pais getCountry() {
-		return this.country;
+	public Pais getPais() {
+		return pais;
 	}
 
-	public void setCountry(Pais country) {
-		this.country = country;
+	public void setPais(Pais pais) {
+		this.pais = pais;
 	}
+
+	
 
 }
