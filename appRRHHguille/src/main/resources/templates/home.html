@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li th:text="#{menu.home}"></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<section id="listado">
+			<table>
+				<caption th:text="#{titulo.tabla.empleados.home}"></caption>
+				<tr>
+					<th th:text="#{empleado.nombre}"></th>
+					<th th:text="#{empleado.puesto}"></th>
+					<th th:text="#{empleado.jefe}"></th>
+					<th th:text="#{empleado.departamento}"></th>
+					<th th:text="#{empleado.departamento.jefe}"></th>
+				</tr>
+
+				<tr th:each = "empleado:${ListadoDepartamento}">				
+					<td th:text="${empleado.nombre}"></td>
+					<td th:text="${empleado.puesto}"></td>
+					<td th:text="${empleado.jefe}"></td>
+					<td th:text="${empleado.departamento}"></td>
+					<td th:text="${empleado.jefeDepartamento}"></td>
+				</tr>
+			</table>
+		</section>
+	</main>
+	<footer> </footer>
+</body>
+</html>
